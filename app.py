@@ -1,11 +1,11 @@
 import requests
 
-def get_dog_image():
-    url = "https://dog.ceo/api/breeds/image/random"
+def get_fact():
+    url = "https://uselessfacts.jsph.pl/api/v2/facts/random"
 
     response = requests.get(url)
     data = response.json()
 
-    return data["message"]
+    return data["text"]
 
-print(get_dog_image())
+print("Random fact:", get_fact())
