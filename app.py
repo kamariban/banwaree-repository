@@ -1,11 +1,35 @@
-import requests
+import random
 
-def get_fact():
-    url = "https://uselessfacts.jsph.pl/api/v2/facts/random"
+player_score = 0
+computer_score = 0
 
-    response = requests.get(url)
-    data = response.json()
+rounds = int(input("How many rounds do you want to play? "))
 
-    return data["text"]
+for i in range(rounds):
+    input("\nPress Enter to roll...")
 
-print("Random fact:", get_fact())
+    player_roll = random.randint(1, 6)
+    computer_roll = random.randint(1, 6)
+
+    print(f"You rolled: {player_roll}")
+    print(f"Computer rolled: {computer_roll}")
+
+    if player_roll > computer_roll:
+        print("You win this round!")
+        player_score += 1
+    elif computer_roll > player_roll:
+        print("Computer wins this round!")
+        computer_score += 1
+    else:
+        print("It's a tie!")
+
+print("\n--- Final Score ---")
+print(f"You: {player_score}")
+print(f"Computer: {computer_score}")
+
+if player_score > computer_score:
+    print("🎉 You win the game!")
+elif computer_score > player_score:
+    print("💻 Computer wins the game!")
+else:
+    print("🤝 It's a draw!")
